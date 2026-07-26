@@ -4,9 +4,19 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'custom_components/babybuddy/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - 'requirements-test.txt'
   push:
     branches:
       - main
+    paths:
+      - 'custom_components/babybuddy/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - 'requirements-test.txt'
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -89,4 +99,4 @@ jobs:
           BABY_BUDDY_PORT: 8000
           API_KEY: ${{ env.api_key }}
         run: |
-          pytest --verbose --maxfail=1 --cov=custom_components/babybuddy --cov-report=term-missing
+          pytest --maxfail=1 --cov=custom_components/babybuddy --cov-report=term-missing
